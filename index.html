@@ -3,52 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Juego de Wordwall</title>
+    <title>Plataforma de Juegos | Wordwall</title>
     <style>
-        /* Estilos básicos para centrar el contenido y dar un buen diseño */
+        /* Fondo con degradado animado */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .contenedor-juego {
-            background-color: #ffffff;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Tarjeta contenedora principal */
+        .card-juego {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             text-align: center;
-            max-width: 90%;
+            max-width: 550px;
+            width: 100%;
+            transition: transform 0.3s ease;
         }
 
+        .card-juego:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Títulos y textos */
         h1 {
-            color: #333333;
-            margin-bottom: 20px;
-            font-size: 24px;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
         }
 
-        /* Asegura que el iframe sea responsivo en pantallas pequeñas */
-        .iframe-wrapper {
+        p {
+            color: #7f8c8d;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Contenedor del mapa/iframe para que sea responsivo */
+        .iframe-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            background-color: #000;
+            /* Mantiene la proporción del juego */
+            padding-top: 76%; 
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Decoración o instrucciones inferiores */
+        .footer-instrucciones {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #95a5a6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor-juego">
-        <h1>¡A Jugar!</h1>
+    <div class="card-juego">
+        <h1>¡Demuestra lo que sabes!</h1>
+        <p>Lee con atención y completa la actividad interactiva que aparece abajo.</p>
         
-        <div class="iframe-wrapper">
-            <iframe style="max-width:100%" src="https://wordwall.net/es/embed/ad025694826f4821af8bee2c3592f221?themeId=1&templateId=5&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe>
+        <div class="iframe-container">
+            <iframe src="https://wordwall.net/es/embed/ad025694826f4821af8bee2c3592f221?themeId=1&templateId=5&fontStackId=0" allowfullscreen></iframe>
+        </div>
+
+        <div class="footer-instrucciones">
+            <span>🎮 Usa el botón inferior derecho del juego para ampliar a pantalla completa.</span>
         </div>
     </div>
 
